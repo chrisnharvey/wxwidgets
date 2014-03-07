@@ -1,0 +1,21 @@
+{
+    "name": "encorephp/wxwidgets",
+    "description": "wxWidgets and wxPHP implementations for EncorePHP.",
+    "keywords": ["encorephp", "gui", "wxwidgets"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Chris Harvey",
+            "email": "chris@chrisnharvey.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Encore\\Wx": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
