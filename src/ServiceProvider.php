@@ -3,6 +3,7 @@
 namespace Encore\Wx;
 
 use Illuminate\Filesystem\Filesystem;
+use Encore\Wx\Command\Install as InstallCommand;
 
 class ServiceProvider extends \Encore\Container\ServiceProvider
 {
@@ -24,6 +25,11 @@ class ServiceProvider extends \Encore\Container\ServiceProvider
             \wxApp::SetInstance($this->container['wx']);
             wxEntry();
         });
+    }
+
+    public function commands()
+    {
+        return [new InstallCommand];
     }
 
     public function provides()
