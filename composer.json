@@ -1,5 +1,5 @@
 {
-    "name": "encore/wxwidgets",
+    "name": "encorephp/wxwidgets",
     "description": "wxWidgets and wxPHP implementations for EncorePHP.",
     "keywords": ["encorephp", "gui", "wxwidgets"],
     "license": "MIT",
@@ -11,7 +11,7 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "encore/giml": "dev-master"
+        "encorephp/giml": "dev-master"
     },
     "autoload": {
         "psr-4": {
