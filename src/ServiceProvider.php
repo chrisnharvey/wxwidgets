@@ -29,7 +29,7 @@ class ServiceProvider extends \Encore\Container\ServiceProvider
 
     public function commands()
     {
-        return [new InstallCommand];
+        return ['Encore\Wx\Command\Install'];
     }
 
     public function provides()
