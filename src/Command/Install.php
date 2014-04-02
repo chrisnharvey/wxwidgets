@@ -7,8 +7,8 @@ use Symfony\Component\Console\Input\InputOption;
 
 class Install extends \Encore\Console\Command
 {
-    public $name = 'wxwidgets:install';
-    public $description = 'Install wxWidgets and wxPHP';
+    protected $name = 'wxwidgets:install';
+    protected $description = 'Install wxWidgets and wxPHP';
 
     public function fire()
     {
