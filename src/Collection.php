@@ -2,7 +2,7 @@
 
 namespace Encore\Wx;
 
-use Encore\GIML;
+use Encore\GIML\ElementInterface;
 use Encore\GIML\CollectionInterface;
 use Encore\Controller\ControllerAwareTrait;
 use Encore\Controller\ControllerAwareInterface;
@@ -15,7 +15,7 @@ class Collection implements CollectionInterface, ControllerAwareInterface
     protected $objects = [];
     protected $ids = [];
 
-    public function add(GIML\ElementInterface $element)
+    public function add(ElementInterface $element)
     {
         $id = $element->id;
 
