@@ -21,6 +21,8 @@ class Collection implements CollectionInterface, ControllerAwareInterface
 
         if ($id === null) $id = $this->generateId();
 
+        $element->id = $id;
+
         $this->checkId($id);
 
         $this->objects[] = $element;
