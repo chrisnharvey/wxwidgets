@@ -3,10 +3,15 @@
 namespace Encore\Wx;
 
 use Encore\GIML;
+use Encore\GIML\CollectionInterface;
+use Encore\Controller\ControllerAwareTrait;
+use Encore\Controller\ControllerAwareInterface;
 use Encore\GIML\Exception\DuplicateIdException;
 
-class Collection implements \Encore\GIML\CollectionInterface
+class Collection implements CollectionInterface, ControllerAwareInterface
 {
+    use ControllerAwareTrait;
+
     protected $objects = [];
     protected $ids = [];
 
