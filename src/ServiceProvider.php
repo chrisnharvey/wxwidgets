@@ -4,6 +4,7 @@ namespace Encore\Wx;
 
 use Illuminate\Filesystem\Filesystem;
 use Encore\Wx\Command\Install as InstallCommand;
+use Encore\View\Parser\GIML as ViewParser;
 
 class ServiceProvider extends \Encore\Container\ServiceProvider
 {
@@ -14,8 +15,8 @@ class ServiceProvider extends \Encore\Container\ServiceProvider
         }
 
         switch ($binding) {
-            case 'view.engine':
-                $this->registerViewEngine();
+            case 'view.parser':
+                $this->registerViewParser();
             break;
 
             case 'wx':
@@ -27,20 +28,31 @@ class ServiceProvider extends \Encore\Container\ServiceProvider
             break;
 
             default: 
-                $this->registerViewEngine();
+                $this->registerGimlCollection();
+                $this->registerViewParser();
                 $this->registerWx();
                 $this->registerLauncher();
             break;
         }
     }
 
-    protected function registerViewEngine()
+    public function boot()
     {
-        $this->container->bind('view.engine', function() {
-            $finder = new FileResourceFinder(new Filesystem, $this->app['config']['view.paths']);
+        $this->container['view.finder']->addExtension('gim');
+    }
 
-            return new Manager($finder);
-        });
+    protected function registerViewParser()
+    {
+        $this->container->bind('view.parser', new ViewParser(
+            $this->container['giml.reader'],
+            $this->container['giml.collection'],
+            'Encore\Wx\Element'
+        ));
+    }
+
+    protected function registerGimlCollection()
+    {
+        $this->container['giml.collection'] = new Collection;
     }
 
     protected function registerWx()
@@ -63,6 +75,6 @@ class ServiceProvider extends \Encore\Container\ServiceProvider
 
     public function provides()
     {
-        return ['wx', 'launcher', 'view.engine', 'giml.collection'];
+        return ['wx', 'launcher', 'view.parser', 'giml.collection'];
     }
 }
