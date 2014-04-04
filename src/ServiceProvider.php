@@ -63,6 +63,7 @@ class ServiceProvider extends \Encore\Container\ServiceProvider
     protected function registerLauncher()
     {
         $this->container->bind('launcher', function() {
+            wxInitAllImageHandlers();
             \wxApp::SetInstance($this->container['wx']);
             wxEntry();
         });
