@@ -6,9 +6,9 @@ class Button implements \Encore\GIML\ElementInterface
 {
     use \Encore\GIML\ElementTrait;
 
-    public function setParent(\Encore\GIML\ElementInterface $parent)
+    public function setParent(\Encore\GIML\ElementInterface &$parent)
     {
-        $this->parent = $parent;
+        $this->parent =& $parent;
 
         $id = $this->collection->getTrueId($this->id);
 
