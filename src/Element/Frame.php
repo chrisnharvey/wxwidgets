@@ -7,6 +7,7 @@ use Encore\GIML;
 class Frame implements GIML\ElementInterface
 {
     use GIML\ElementTrait;
+    use Traits\Wx;
 
     public function init()
     {
@@ -16,10 +17,5 @@ class Frame implements GIML\ElementInterface
     public function show()
     {
         $this->element->Show();
-    }
-
-    public function getRaw()
-    {
-        return $this->element;
     }
 }
