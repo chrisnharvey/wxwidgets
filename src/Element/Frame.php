@@ -8,10 +8,12 @@ class Frame implements GIML\ElementInterface
 {
     use GIML\ElementTrait;
     use Traits\Wx;
+    use Traits\Positionable;
+    use Traits\Sizable;
 
     public function init()
     {
-        $this->element = new \wxFrame(null, wxID_ANY, $this->title, new \wxPoint($this->x, $this->y), new \wxSize($this->width, $this->height), wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL);
+        $this->element = new \wxFrame(null, wxID_ANY, $this->title, $this->getPosition(), $this->getSize(), wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL);
     }
 
     public function show()
