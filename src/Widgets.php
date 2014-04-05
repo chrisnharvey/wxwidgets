@@ -2,20 +2,30 @@
 
 namespace Encore\Wx;
 
+use Encore\Container\Container;
 use Encore\Container\ContainerAwareInterface;
-use Encore\Container\ContainerAwareTrait;
 
 class Widgets extends \wxApp implements ContainerAwareInterface
 {
-    use ContainerAwareTrait;
+    protected static $container;
+
+    public function setContainer(Container $container)
+    {
+        static::$container = $container;
+    }
+
+    public function getContainer()
+    {
+        return static::$container;
+    }
 
     public function OnInit()
     {
-        $this->container->launch();
+        $this->getContainer()->launch();
     }
 
     public function OnExit()
     {
-        $this->container->quit();
+        $this->getContainer()->quit();
     }
 }
