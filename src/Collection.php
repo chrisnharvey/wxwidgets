@@ -25,6 +25,10 @@ class Collection implements CollectionInterface, ControllerAwareInterface
 
         $this->checkId($id);
 
+        // Reassign element
+        $elem = $element;
+        $element = $elem;
+
         $this->objects[] = $element;
 
         if (count($this->objects) === 1) {
