@@ -6,6 +6,8 @@ class Button implements \Encore\GIML\ElementInterface
 {
     use \Encore\GIML\ElementTrait;
     use Traits\Wx;
+    use Traits\Sizable;
+    use Traits\Positionable;
 
     public function setParent(\Encore\GIML\ElementInterface &$parent)
     {
