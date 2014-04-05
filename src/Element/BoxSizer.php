@@ -7,6 +7,7 @@ use Encore\GIML;
 class BoxSizer implements GIML\ElementInterface
 {
     use \Encore\GIML\ElementTrait;
+    use Traits\Wx;
 
     public function init()
     {
@@ -27,10 +28,6 @@ class BoxSizer implements GIML\ElementInterface
         $this->parent =& $parent;
         $this->parent->getRaw()->SetSizer($this->getRaw());
     }
-
-    public function getRaw()
-    {
-        return $this->element;
     }
 
     protected function setAttribute($key, $value)
