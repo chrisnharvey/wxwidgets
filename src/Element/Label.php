@@ -15,4 +15,13 @@ class Label implements \Encore\GIML\ElementInterface
         $this->parent =& $parent;
         $parent->getRaw()->Add($this->element);
     }
+
+    public function setValue($value)
+    {
+        if ($this->element) {
+            $this->element->SetLabel($value);
+        }
+
+        $this->value = $value;
+    }
 }
