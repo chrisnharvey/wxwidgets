@@ -34,7 +34,7 @@ class BoxSizer implements GIML\ElementInterface
         }
     }
 
-    protected function setAttribute($key, $value)
+    public function setAttribute($key, $value)
     {
         switch ($key) {
             case 'orientation':
