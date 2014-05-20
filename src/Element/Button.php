@@ -9,7 +9,7 @@ class Button implements \Encore\GIML\ElementInterface
     use Traits\Sizable;
     use Traits\Positionable;
 
-    public function setParent(\Encore\GIML\ElementInterface &$parent)
+    public function setParent(\Encore\GIML\ElementInterface $parent)
     {
         $this->parent =& $parent;
 

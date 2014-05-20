@@ -19,7 +19,7 @@ class DatePicker implements \Encore\GIML\ElementInterface
         'onClick' => wxEVT_CALENDAR_WEEKDAY_CLICKED
     ];
 
-    public function setParent(\Encore\GIML\ElementInterface &$parent)
+    public function setParent(\Encore\GIML\ElementInterface $parent)
     {
         $this->parent =& $parent;
 

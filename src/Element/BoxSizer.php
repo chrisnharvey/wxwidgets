@@ -23,7 +23,7 @@ class BoxSizer implements GIML\ElementInterface
         }
     }
 
-    public function setParent(GIML\ElementInterface &$parent)
+    public function setParent(GIML\ElementInterface $parent)
     {
         $this->parent =& $parent;
 

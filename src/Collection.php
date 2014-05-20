@@ -15,7 +15,7 @@ class Collection implements CollectionInterface, ControllerAwareInterface
     protected $objects = [];
     protected $ids = [];
 
-    public function add(ElementInterface &$element)
+    public function add(ElementInterface $element)
     {
         $id = $element->id;
 
