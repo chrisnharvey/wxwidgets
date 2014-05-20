@@ -9,7 +9,7 @@ trait Wx
         return $this->element;
     }
 
-    public function __destruct()
+    public function destroy()
     {
         if (method_exists($this->element, 'Destroy')) {
             $this->element->Destroy();
