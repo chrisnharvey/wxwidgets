@@ -39,12 +39,11 @@ class Collection implements CollectionInterface, ControllerAwareInterface
         $this->ids[array_search($element, $this->objects, true)] = $id;
     }
 
-    public function destroy($element)
+    public function remove($element)
     {
         $trueId = $this->getTrueId($element);
 
-        $this->objects[$trueId] = null;
-        $this->ids[$trueId] = null;
+        $this->objects[$trueId]->destroy();
 
         unset($this->objects[$trueId]);
         unset($this->ids[$trueId]);
