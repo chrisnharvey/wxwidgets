@@ -8,19 +8,27 @@ trait Events
 {
     protected function bindEvents()
     {
-        $id = $this->collection->getTrueId($this->id);
+        $callback = new ClosureCallback(function($method) {
+            $controller = $this->collection->getController();
+            $args = array_slice(func_get_args(), 1);
+
+            return call_user_func_array([$controller, $method], $args);
+        });
 
         foreach ($this->events as $event => $constant) {
             if ( ! array_key_exists($event, $this->attributes)) continue;
 
-            $this->element->Connect($id, $constant, [$this, $event]);
+            $this->connectEvent($constant, [$callback, $this->$event]);
         }
     }
 
-    public function __call($method, $args)
+    protected function connectEvent($constant, callable $callback)
     {
-        $controller = $this->collection->getController();
+        $id = $this->element->GetId();
 
-        return call_user_func_array([$controller, $this->$method], []);
+        $this->collection
+            ->getTopLevelWindow()
+            ->getRaw()
+            ->Connect($id, $constant, $callback);
     }
 }
