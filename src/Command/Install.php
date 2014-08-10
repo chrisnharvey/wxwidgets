@@ -18,4 +18,11 @@ class Install extends \Encore\Console\Command
             $this->output->write(fread($handle, 2048));
         }
     }
+
+    public function getOptions()
+    {
+        return array(
+            array('from-source', null, InputOption::VALUE_NONE, 'Download wxPHP from source instead of installing from PECL'),
+        );
+    }
 }
