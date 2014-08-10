@@ -11,7 +11,7 @@ class Button implements \Encore\GIML\ElementInterface
 
     public function setParent(\Encore\GIML\ElementInterface $parent)
     {
-        $this->parent =& $parent;
+        $this->parent = $parent;
 
         $id = $this->collection->getTrueId($this->id);
 

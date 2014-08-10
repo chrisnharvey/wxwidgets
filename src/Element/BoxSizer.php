@@ -25,7 +25,7 @@ class BoxSizer implements GIML\ElementInterface
 
     public function setParent(GIML\ElementInterface $parent)
     {
-        $this->parent =& $parent;
+        $this->parent = $parent;
 
         if ($parent instanceof Frame) {
             $this->parent->getRaw()->SetSizer($this->getRaw());
