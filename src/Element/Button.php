@@ -6,8 +6,13 @@ class Button implements \Encore\GIML\ElementInterface
 {
     use \Encore\GIML\ElementTrait;
     use Traits\Wx;
+    use Traits\Events;
     use Traits\Sizable;
     use Traits\Positionable;
+
+    protected $events = [
+        'onClick' => wxEVT_COMMAND_BUTTON_CLICKED
+    ];
 
     public function setParent(\Encore\GIML\ElementInterface $parent)
     {
@@ -20,21 +25,5 @@ class Button implements \Encore\GIML\ElementInterface
         $this->bindEvents();
 
         $parent->getRaw()->Add($this->element);
-    }
-
-    protected function bindEvents()
-    {
-        $id = $this->collection->getTrueId($this->id);
-
-        if ($this->onClick) {
-            $this->element->Connect($id, wxEVT_COMMAND_BUTTON_CLICKED, [$this, 'click']);
-        }
-    }
-
-    public function click()
-    {
-        $controller = $this->collection->getController();
-
-        return call_user_func_array([$controller, $this->onClick], []);
     }
 }
