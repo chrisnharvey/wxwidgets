@@ -2,6 +2,8 @@
 
 namespace Encore\Wx;
 
+use Encore\Wx\Element\Frame;
+use Encore\Wx\Element\Dialog;
 use Encore\GIML\ElementInterface;
 use Encore\GIML\CollectionInterface;
 use Encore\Controller\ControllerAwareTrait;
@@ -37,6 +39,16 @@ class Collection implements CollectionInterface, ControllerAwareInterface
         }
 
         $this->ids[array_search($element, $this->objects, true)] = $id;
+    }
+
+    public function getTopLevelWindow()
+    {
+        foreach ($this->objects as $object) {
+            if ($object instanceof Frame
+            or $object instanceof Dialog) {
+                return $object;
+            }
+        }
     }
 
     public function remove($element)
