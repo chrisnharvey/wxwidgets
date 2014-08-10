@@ -11,7 +11,10 @@ class ServiceProvider extends \Encore\Container\ServiceProvider
     public function register($binding)
     {
         if ( ! extension_loaded('wxwidgets')) {
-            dl('wxwidgets.'.PHP_SHLIB_SUFFIX);
+            if ( ! @dl('wxwidgets.'.PHP_SHLIB_SUFFIX)) {
+                echo 'wxWidgets extension required'.PHP_EOL;
+                exit(1);
+            }
         }
 
         switch ($binding) {
