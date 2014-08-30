@@ -39,11 +39,6 @@ class ServiceProvider extends \Encore\Container\ServiceProvider
         }
     }
 
-    public function boot()
-    {
-        $this->container['view.finder']->addExtension('gim');
-    }
-
     protected function registerViewParser()
     {
         $this->container->bind('view.parser', new ViewParser(
