@@ -25,7 +25,7 @@ class TextBox implements \Encore\GIML\ElementInterface
 
         $id = $this->collection->getTrueId($this->id);
 
-        $this->element = new \wxTextCtrl($parent->getParent()->getRaw(), $id, $this->value or wxEmptyString, $this->getPosition(), $this->getSize(), 0);
+        $this->element = new \wxTextCtrl($parent->getParent()->getRaw(), $id, $this->value or wxEmptyString, $this->getPosition(), $this->getSize(), wxTE_PROCESS_ENTER);
 
         $this->bindEvents();
 
