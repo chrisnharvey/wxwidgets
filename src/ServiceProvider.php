@@ -4,7 +4,7 @@ namespace Encore\Wx;
 
 use Illuminate\Filesystem\Filesystem;
 use Encore\Wx\Command\Install as InstallCommand;
-use Encore\View\Parser\GIML as ViewParser;
+use Encore\View\Parser\View\Giml as ViewParser;
 
 class ServiceProvider extends \Encore\Container\ServiceProvider
 {
@@ -18,7 +18,7 @@ class ServiceProvider extends \Encore\Container\ServiceProvider
         }
 
         switch ($binding) {
-            case 'view.parser':
+            case 'view.viewparser':
                 $this->registerViewParser();
             break;
 
@@ -41,7 +41,7 @@ class ServiceProvider extends \Encore\Container\ServiceProvider
 
     protected function registerViewParser()
     {
-        $this->container->bind('view.parser', new ViewParser(
+        $this->container->bind('view.viewparser', new ViewParser(
             $this->container['giml.reader'],
             $this->container['giml.collection'],
             'Encore\Wx\Element'
@@ -74,6 +74,6 @@ class ServiceProvider extends \Encore\Container\ServiceProvider
 
     public function provides()
     {
-        return ['wx', 'launcher', 'view.parser', 'giml.collection'];
+        return ['wx', 'launcher', 'view.viewparser', 'giml.collection'];
     }
 }
