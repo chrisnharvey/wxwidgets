@@ -13,7 +13,7 @@ class Label implements \Encore\GIML\ElementInterface
     {
         $this->parent = $parent;
 
-        $this->element = new \wxStaticText($parent->getParent()->getRaw(), wxID_ANY, $this->value, $this->getPosition(), $this->getSize());
+        $this->element = new \wxStaticText($parent->getParent()->getRaw(), wxID_ANY, $this->text ?: $this->value, $this->getPosition(), $this->getSize());
 
         $parent->getRaw()->Add($this->element);
     }

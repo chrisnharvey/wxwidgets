@@ -20,7 +20,7 @@ class Button implements \Encore\GIML\ElementInterface
 
         $id = $this->collection->getTrueId($this->id);
 
-        $this->element = new \wxButton($parent->getParent()->getRaw(), $id, $this->value, $this->getPosition(), $this->getSize(), 0 );
+        $this->element = new \wxButton($parent->getParent()->getRaw(), $id, $this->text ?: $this->value, $this->getPosition(), $this->getSize(), 0 );
 
         $this->bindEvents();
 
