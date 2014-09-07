@@ -9,6 +9,7 @@ class TextBox implements \Encore\GIML\ElementInterface
     use Traits\Sizable;
     use Traits\Positionable;
     use Traits\Events;
+    use Traits\Style;
 
     protected $events = [
         'onCut' => wxEVT_COMMAND_TEXT_CUT,
@@ -19,13 +20,17 @@ class TextBox implements \Encore\GIML\ElementInterface
         'onUrl' => wxEVT_COMMAND_TEXT_URL
     ];
 
+    protected $styles = [
+        'processEnter' => wxTE_PROCESS_ENTER
+    ];
+
     public function setParent(\Encore\GIML\ElementInterface $parent)
     {
         $this->parent = $parent;
 
         $id = $this->collection->getTrueId($this->id);
 
-        $this->element = new \wxTextCtrl($parent->getParent()->getRaw(), $id, $this->value or wxEmptyString, $this->getPosition(), $this->getSize(), wxTE_PROCESS_ENTER);
+        $this->element = new \wxTextCtrl($parent->getParent()->getRaw(), $id, $this->value or wxEmptyString, $this->getPosition(), $this->getSize(), $this->buildStyles());
 
         $this->bindEvents();
 
