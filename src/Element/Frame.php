@@ -11,6 +11,7 @@ class Frame implements GIML\ElementInterface
     use Traits\Positionable;
     use Traits\Sizable;
     use Traits\Events;
+    use Traits\Style;
 
     protected $events = [
         'onClose' => wxEVT_CLOSE_WINDOW,
@@ -20,9 +21,13 @@ class Frame implements GIML\ElementInterface
         'onMenuHighlight' => wxEVT_MENU_HIGHLIGHT,
     ];
 
+    protected $styles = [
+        'closeBox' => wxCLOSE_BOX
+    ];
+
     public function init()
     {
-        $this->element = new \wxFrame(null, wxID_ANY, $this->title, $this->getPosition(), $this->getSize(), wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL);
+        $this->element = new \wxFrame(null, wxID_ANY, $this->title, $this->getPosition(), $this->getSize(), wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL|$this->buildStyles());
 
         $this->bindEvents();
     }
