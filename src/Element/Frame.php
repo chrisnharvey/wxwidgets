@@ -2,11 +2,11 @@
 
 namespace Encore\Wx\Element;
 
-use Encore\GIML;
+use Encore\Giml;
 
-class Frame implements GIML\ElementInterface
+class Frame implements Giml\ElementInterface
 {
-    use GIML\ElementTrait;
+    use Giml\ElementTrait;
     use Traits\Wx;
     use Traits\Positionable;
     use Traits\Sizable;
