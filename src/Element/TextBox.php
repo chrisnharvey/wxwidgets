@@ -2,9 +2,9 @@
 
 namespace Encore\Wx\Element;
 
-class TextBox implements \Encore\GIML\ElementInterface
+class TextBox implements \Encore\Giml\ElementInterface
 {
-    use \Encore\GIML\ElementTrait;
+    use \Encore\Giml\ElementTrait;
     use Traits\Wx;
     use Traits\Sizable;
     use Traits\Positionable;
@@ -24,7 +24,7 @@ class TextBox implements \Encore\GIML\ElementInterface
         'processEnter' => wxTE_PROCESS_ENTER
     ];
 
-    public function setParent(\Encore\GIML\ElementInterface $parent)
+    public function setParent(\Encore\Giml\ElementInterface $parent)
     {
         $this->parent = $parent;
 

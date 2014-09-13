@@ -2,12 +2,12 @@
 
 namespace Encore\Wx\Element;
 
-class Menu implements \Encore\GIML\ElementInterface
+class Menu implements \Encore\Giml\ElementInterface
 {
-    use \Encore\GIML\ElementTrait;
+    use \Encore\Giml\ElementTrait;
     use Traits\Wx;
 
-    public function setParent(\Encore\GIML\ElementInterface $parent)
+    public function setParent(\Encore\Giml\ElementInterface $parent)
     {
         $this->parent = $parent;
 

@@ -2,11 +2,11 @@
 
 namespace Encore\Wx\Element;
 
-use Encore\GIML;
+use Encore\Giml;
 
-class Panel implements GIML\ElementInterface
+class Panel implements Giml\ElementInterface
 {
-    use GIML\ElementTrait;
+    use Giml\ElementTrait;
     use Traits\Wx;
 
     public function __construct()

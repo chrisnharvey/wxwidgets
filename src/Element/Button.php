@@ -2,9 +2,9 @@
 
 namespace Encore\Wx\Element;
 
-class Button implements \Encore\GIML\ElementInterface
+class Button implements \Encore\Giml\ElementInterface
 {
-    use \Encore\GIML\ElementTrait;
+    use \Encore\Giml\ElementTrait;
     use Traits\Wx;
     use Traits\Events;
     use Traits\Sizable;
@@ -14,7 +14,7 @@ class Button implements \Encore\GIML\ElementInterface
         'onClick' => wxEVT_COMMAND_BUTTON_CLICKED
     ];
 
-    public function setParent(\Encore\GIML\ElementInterface $parent)
+    public function setParent(\Encore\Giml\ElementInterface $parent)
     {
         $this->parent = $parent;
 
