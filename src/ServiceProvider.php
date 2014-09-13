@@ -5,6 +5,7 @@ namespace Encore\Wx;
 use Illuminate\Filesystem\Filesystem;
 use Encore\Wx\Command\Install as InstallCommand;
 use Encore\View\Parser\View\Giml as ViewParser;
+use Encore\Giml\NamespaceElementFactory;
 
 class ServiceProvider extends \Encore\Container\ServiceProvider
 {
@@ -44,7 +45,7 @@ class ServiceProvider extends \Encore\Container\ServiceProvider
         $this->container->bind('view.viewparser', new ViewParser(
             $this->container['giml.reader'],
             $this->container['giml.collection'],
-            'Encore\Wx\Element'
+            new NamespaceElementFactory('Encore\Wx\Element')
         ));
     }
 
