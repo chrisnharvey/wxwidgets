@@ -2,14 +2,14 @@
 
 namespace Encore\Wx\Element;
 
-class Label implements \Encore\GIML\ElementInterface
+class Label implements \Encore\Giml\ElementInterface
 {
-    use \Encore\GIML\ElementTrait;
+    use \Encore\Giml\ElementTrait;
     use Traits\Sizable;
     use Traits\Positionable;
     use Traits\Wx;
 
-    public function setParent(\Encore\GIML\ElementInterface $parent)
+    public function setParent(\Encore\Giml\ElementInterface $parent)
     {
         $this->parent = $parent;
 

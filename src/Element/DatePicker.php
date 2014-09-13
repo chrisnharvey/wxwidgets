@@ -2,9 +2,9 @@
 
 namespace Encore\Wx\Element;
 
-class DatePicker implements \Encore\GIML\ElementInterface
+class DatePicker implements \Encore\Giml\ElementInterface
 {
-    use \Encore\GIML\ElementTrait;
+    use \Encore\Giml\ElementTrait;
     use Traits\Events;
     use Traits\Wx;
     use Traits\Positionable;
@@ -19,7 +19,7 @@ class DatePicker implements \Encore\GIML\ElementInterface
         'onClick' => wxEVT_CALENDAR_WEEKDAY_CLICKED
     ];
 
-    public function setParent(\Encore\GIML\ElementInterface $parent)
+    public function setParent(\Encore\Giml\ElementInterface $parent)
     {
         $this->parent = $parent;
 

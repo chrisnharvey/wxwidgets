@@ -2,11 +2,11 @@
 
 namespace Encore\Wx\Element;
 
-use Encore\GIML\ElementInterface;
+use Encore\Giml\ElementInterface;
 
-class WebView implements \Encore\GIML\ElementInterface
+class WebView implements \Encore\Giml\ElementInterface
 {
-    use \Encore\GIML\ElementTrait;
+    use \Encore\Giml\ElementTrait;
     use Traits\Sizable;
     use Traits\Positionable;
     use Traits\Events;
@@ -21,7 +21,7 @@ class WebView implements \Encore\GIML\ElementInterface
         'onError' => wxEVT_WEBVIEW_ERROR
     ];
 
-    public function setParent(\Encore\GIML\ElementInterface $parent)
+    public function setParent(\Encore\Giml\ElementInterface $parent)
     {
         $this->parent = $parent;
 

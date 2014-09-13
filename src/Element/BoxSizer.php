@@ -2,11 +2,11 @@
 
 namespace Encore\Wx\Element;
 
-use Encore\GIML;
+use Encore\Giml;
 
-class BoxSizer implements GIML\ElementInterface
+class BoxSizer implements Giml\ElementInterface
 {
-    use \Encore\GIML\ElementTrait;
+    use \Encore\Giml\ElementTrait;
     use Traits\Wx;
 
     public function init()
@@ -23,7 +23,7 @@ class BoxSizer implements GIML\ElementInterface
         }
     }
 
-    public function setParent(GIML\ElementInterface $parent)
+    public function setParent(Giml\ElementInterface $parent)
     {
         $this->parent = $parent;
 

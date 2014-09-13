@@ -4,11 +4,11 @@ namespace Encore\Wx;
 
 use Encore\Wx\Element\Frame;
 use Encore\Wx\Element\Dialog;
-use Encore\GIML\ElementInterface;
-use Encore\GIML\CollectionInterface;
+use Encore\Giml\ElementInterface;
+use Encore\Giml\CollectionInterface;
 use Encore\Controller\ControllerAwareTrait;
 use Encore\Controller\ControllerAwareInterface;
-use Encore\GIML\Exception\DuplicateIdException;
+use Encore\Giml\Exception\DuplicateIdException;
 
 class Collection implements CollectionInterface, ControllerAwareInterface
 {

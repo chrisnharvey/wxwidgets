@@ -2,9 +2,9 @@
 
 namespace Encore\Wx\Element;
 
-class MenuItem implements \Encore\GIML\ElementInterface
+class MenuItem implements \Encore\Giml\ElementInterface
 {
-    use \Encore\GIML\ElementTrait;
+    use \Encore\Giml\ElementTrait;
     use Traits\Events;
     use Traits\Wx;
 
@@ -12,7 +12,7 @@ class MenuItem implements \Encore\GIML\ElementInterface
         'onSelect' => wxEVT_COMMAND_MENU_SELECTED
     ];
 
-    public function setParent(\Encore\GIML\ElementInterface $parent)
+    public function setParent(\Encore\Giml\ElementInterface $parent)
     {
         $this->parent = $parent;
 
