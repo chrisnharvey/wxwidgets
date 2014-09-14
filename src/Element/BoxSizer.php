@@ -14,23 +14,18 @@ class BoxSizer implements Giml\ElementInterface
         $this->element = new \wxBoxSizer($this->orientation == 'horizontal'
             ? wxHORIZONTAL
             : wxVERTICAL);
+
+        if ($this->parent instanceof Frame) {
+            $this->parent->getRaw()->SetSizer($this->getRaw());
+        } elseif ($this->parent instanceof static) {
+            $this->parent->getRaw()->Add($this->getRaw());
+        }
     }
 
     public function setAttributes(array $attributes)
     {
         foreach ($attributes as $key => $value) {
             $this->setAttribute($key, $value);
-        }
-    }
-
-    public function setParent(Giml\ElementInterface $parent)
-    {
-        $this->parent = $parent;
-
-        if ($parent instanceof Frame) {
-            $this->parent->getRaw()->SetSizer($this->getRaw());
-        } elseif ($parent instanceof static) {
-            $this->parent->getRaw()->Add($this->getRaw());
         }
     }
 

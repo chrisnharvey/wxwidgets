@@ -24,17 +24,15 @@ class TextBox implements \Encore\Giml\ElementInterface
         'processEnter' => wxTE_PROCESS_ENTER
     ];
 
-    public function setParent(\Encore\Giml\ElementInterface $parent)
+    public function init()
     {
-        $this->parent = $parent;
-
         $id = $this->collection->getTrueId($this->id);
 
-        $this->element = new \wxTextCtrl($parent->getParent()->getRaw(), $id, $this->value or wxEmptyString, $this->getPosition(), $this->getSize(), $this->buildStyles());
+        $this->element = new \wxTextCtrl($this->parent->getParent()->getRaw(), $id, $this->value or wxEmptyString, $this->getPosition(), $this->getSize(), $this->buildStyles());
 
         $this->bindEvents();
 
-        $parent->getRaw()->Add($this->element);
+        $this->parent->getRaw()->Add($this->element);
     }
 
     public function getValue()

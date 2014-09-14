@@ -14,16 +14,14 @@ class Button implements \Encore\Giml\ElementInterface
         'onClick' => wxEVT_COMMAND_BUTTON_CLICKED
     ];
 
-    public function setParent(\Encore\Giml\ElementInterface $parent)
+    public function init()
     {
-        $this->parent = $parent;
-
         $id = $this->collection->getTrueId($this->id);
 
-        $this->element = new \wxButton($parent->getParent()->getRaw(), $id, $this->text ?: $this->value, $this->getPosition(), $this->getSize(), 0 );
+        $this->element = new \wxButton($this->parent->getParent()->getRaw(), $id, $this->text ?: $this->value, $this->getPosition(), $this->getSize(), 0 );
 
         $this->bindEvents();
 
-        $parent->getRaw()->Add($this->element);
+        $this->parent->getRaw()->Add($this->element);
     }
 }

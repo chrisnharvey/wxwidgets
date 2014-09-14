@@ -9,13 +9,11 @@ class Label implements \Encore\Giml\ElementInterface
     use Traits\Positionable;
     use Traits\Wx;
 
-    public function setParent(\Encore\Giml\ElementInterface $parent)
+    public function init()
     {
-        $this->parent = $parent;
+        $this->element = new \wxStaticText($this->parent->getParent()->getRaw(), wxID_ANY, $this->text ?: $this->value, $this->getPosition(), $this->getSize());
 
-        $this->element = new \wxStaticText($parent->getParent()->getRaw(), wxID_ANY, $this->text ?: $this->value, $this->getPosition(), $this->getSize());
-
-        $parent->getRaw()->Add($this->element);
+        $this->parent->getRaw()->Add($this->element);
     }
 
     public function setValue($value)

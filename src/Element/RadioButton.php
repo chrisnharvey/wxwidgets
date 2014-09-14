@@ -14,16 +14,14 @@ class RadioButton implements \Encore\Giml\ElementInterface
         'onClick' => wxEVT_RADIOBUTTON
     ];
 
-    public function setParent(\Encore\Giml\ElementInterface $parent)
+    public function init()
     {
-        $this->parent = $parent;
-
         $id = $this->collection->getTrueId($this->id);
 
-        $this->element = new \wxRadioButton($parent->getParent()->getRaw(), $id, $this->text ?: $this->value, $this->getPosition(), $this->getSize());
+        $this->element = new \wxRadioButton($this->parent->getParent()->getRaw(), $id, $this->text ?: $this->value, $this->getPosition(), $this->getSize());
 
         $this->bindEvents();
 
-        $parent->getRaw()->Add($this->element);
+        $this->parent->getRaw()->Add($this->element);
     }
 }

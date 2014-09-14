@@ -12,12 +12,10 @@ class MenuItem implements \Encore\Giml\ElementInterface
         'onSelect' => wxEVT_COMMAND_MENU_SELECTED
     ];
 
-    public function setParent(\Encore\Giml\ElementInterface $parent)
+    public function init()
     {
-        $this->parent = $parent;
-
         if ($this->type == 'separator') {
-            return $parent->getRaw()->AppendSeparator();
+            return $this->parent->getRaw()->AppendSeparator();
         }
 
         $id = $this->collection->getTrueId($this->id);
@@ -26,11 +24,11 @@ class MenuItem implements \Encore\Giml\ElementInterface
 
         if ($this->shortcut) $title .= "\t{$this->shortcut}";
 
-        $this->element = new \wxMenuItem($parent->getRaw(), wxID_ANY, $title, $this->description, wxITEM_NORMAL);
+        $this->element = new \wxMenuItem($this->parent->getRaw(), wxID_ANY, $title, $this->description, wxITEM_NORMAL);
 
         $this->bindEvents();
         
-        $parent->getRaw()->Append($this->element);
+        $this->parent->getRaw()->Append($this->element);
     }
 
     protected function getType()

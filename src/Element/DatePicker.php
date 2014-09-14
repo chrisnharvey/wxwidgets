@@ -19,17 +19,15 @@ class DatePicker implements \Encore\Giml\ElementInterface
         'onClick' => wxEVT_CALENDAR_WEEKDAY_CLICKED
     ];
 
-    public function setParent(\Encore\Giml\ElementInterface $parent)
+    public function init()
     {
-        $this->parent = $parent;
-
         $id = $this->collection->getTrueId($this->id);
         $date = $this->date ? strtotime($this->date) : wxDefaultDateTime;
 
-        $this->element = new \wxCalendarCtrl($parent->getParent()->getRaw(), $id, $date, $this->getPosition(), $this->getSize(), 0 );
+        $this->element = new \wxCalendarCtrl($this->parent->getParent()->getRaw(), $id, $date, $this->getPosition(), $this->getSize(), 0 );
 
         $this->bindEvents();
 
-        $parent->getRaw()->Add($this->element);
+        $this->parent->getRaw()->Add($this->element);
     }
 }

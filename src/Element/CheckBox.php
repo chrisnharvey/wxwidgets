@@ -14,16 +14,14 @@ class CheckBox implements \Encore\Giml\ElementInterface
         'onClick' => wxEVT_CHECKBOX
     ];
 
-    public function setParent(\Encore\Giml\ElementInterface $parent)
+    public function init()
     {
-        $this->parent = $parent;
-
         $id = $this->collection->getTrueId($this->id);
 
-        $this->element = new \wxCheckBox($parent->getParent()->getRaw(), $id, $this->text ?: $this->value, $this->getPosition(), $this->getSize());
+        $this->element = new \wxCheckBox($this->parent->getParent()->getRaw(), $id, $this->text ?: $this->value, $this->getPosition(), $this->getSize());
 
         $this->bindEvents();
 
-        $parent->getRaw()->Add($this->element);
+        $this->parent->getRaw()->Add($this->element);
     }
 }

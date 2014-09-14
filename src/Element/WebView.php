@@ -21,16 +21,14 @@ class WebView implements \Encore\Giml\ElementInterface
         'onError' => wxEVT_WEBVIEW_ERROR
     ];
 
-    public function setParent(\Encore\Giml\ElementInterface $parent)
+    public function init()
     {
-        $this->parent = $parent;
-
         $id = $this->collection->getTrueId($this->id);
 
-        $this->element = \wxWebView::NewMethod($parent->getParent()->getRaw(), $id, $this->url, $this->getPosition(), $this->getSize());
+        $this->element = \wxWebView::NewMethod($this->parent->getParent()->getRaw(), $id, $this->url, $this->getPosition(), $this->getSize());
 
         $this->bindEvents();
 
-        $parent->getRaw()->Add($this->element);
+        $this->parent->getRaw()->Add($this->element);
     }
 }
