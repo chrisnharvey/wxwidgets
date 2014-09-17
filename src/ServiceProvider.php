@@ -31,6 +31,10 @@ class ServiceProvider extends \Encore\Container\ServiceProvider
                 $this->registerLauncher();
             break;
 
+            case 'giml.collection':
+                $this->registerGimlCollection();
+            break;
+
             default: 
                 $this->registerGimlCollection();
                 $this->registerViewParser();
