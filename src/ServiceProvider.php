@@ -19,7 +19,7 @@ class ServiceProvider extends \Encore\Container\ServiceProvider
     {
         if ( ! extension_loaded('wxwidgets')) {
             if ( ! @dl('wxwidgets.'.PHP_SHLIB_SUFFIX)) {
-                echo 'wxWidgets extension required'.PHP_EOL;
+                echo 'wxWidgets extension not installed or dynamically loaded extensions are not enabled'.PHP_EOL;
                 exit(1);
             }
         }
