@@ -2,20 +2,19 @@
 
 namespace Encore\Wx\Element;
 
-use Encore\Giml;
+use wxSize;
+use wxPanel;
+use Encore\Giml\ElementTrait;
+use Encore\Wx\Element\Traits\Wx;
+use Encore\Giml\ElementInterface;
 
-class Panel implements Giml\ElementInterface
+class Panel implements ElementInterface
 {
-    use Giml\ElementTrait;
-    use Traits\Wx;
-
-    public function __construct()
-    {
-        
-    }
+    use ElementTrait;
+    use Wx;
 
     public function init()
     {
-        $this->element = new \wxPanel(null, wxID_ANY, wxDefaultPosition, new \wxSize($this->width, $this->height), wxTAB_TRAVERSAL, $this->title);
+        $this->element = new wxPanel(null, wxID_ANY, wxDefaultPosition, new wxSize($this->width, $this->height), wxTAB_TRAVERSAL, $this->title);
     }
 }

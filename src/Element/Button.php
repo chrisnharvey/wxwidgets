@@ -2,13 +2,21 @@
 
 namespace Encore\Wx\Element;
 
-class Button implements \Encore\Giml\ElementInterface
+use wxButton;
+use Encore\Giml\ElementTrait;
+use Encore\Giml\ElementInterface;
+use Encore\Wx\Element\Traits\Wx;
+use Encore\Wx\Element\Traits\Events;
+use Encore\Wx\Element\Traits\Sizable;
+use Encore\Wx\Element\Traits\Positionable;
+
+class Button implements ElementInterface
 {
-    use \Encore\Giml\ElementTrait;
-    use Traits\Wx;
-    use Traits\Events;
-    use Traits\Sizable;
-    use Traits\Positionable;
+    use ElementTrait;
+    use Wx;
+    use Events;
+    use Sizable;
+    use Positionable;
 
     protected $events = [
         'onClick' => wxEVT_COMMAND_BUTTON_CLICKED
@@ -18,7 +26,7 @@ class Button implements \Encore\Giml\ElementInterface
     {
         $id = $this->collection->getTrueId($this->id);
 
-        $this->element = new \wxButton($this->parent->getParent()->getRaw(), $id, $this->text ?: $this->value, $this->getPosition(), $this->getSize(), 0 );
+        $this->element = new wxButton($this->parent->getParent()->getRaw(), $id, $this->text ?: $this->value, $this->getPosition(), $this->getSize(), 0 );
 
         $this->bindEvents();
 

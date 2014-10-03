@@ -2,16 +2,23 @@
 
 namespace Encore\Wx\Element;
 
-class Label implements \Encore\Giml\ElementInterface
+use wxStaticText;
+use Encore\Giml\ElementTrait;
+use Encore\Giml\ElementInterface;
+use Encore\Wx\Element\Traits\Wx;
+use Encore\Wx\Element\Traits\Sizable;
+use Encore\Wx\Element\Traits\Positionable;
+
+class Label implements ElementInterface
 {
-    use \Encore\Giml\ElementTrait;
-    use Traits\Sizable;
-    use Traits\Positionable;
-    use Traits\Wx;
+    use ElementTrait;
+    use Sizable;
+    use Positionable;
+    use Wx;
 
     public function init()
     {
-        $this->element = new \wxStaticText($this->parent->getParent()->getRaw(), wxID_ANY, $this->text ?: $this->value, $this->getPosition(), $this->getSize());
+        $this->element = new wxStaticText($this->parent->getParent()->getRaw(), wxID_ANY, $this->text ?: $this->value, $this->getPosition(), $this->getSize());
 
         $this->parent->getRaw()->Add($this->element);
     }

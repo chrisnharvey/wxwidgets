@@ -2,11 +2,17 @@
 
 namespace Encore\Wx\Element;
 
-class MenuItem implements \Encore\Giml\ElementInterface
+use wxMenuItem;
+use Encore\Giml\ElementTrait;
+use Encore\Wx\Element\Traits\Wx;
+use Encore\Wx\Element\Traits\Events;
+use Encore\Giml\ElementInterface;
+
+class MenuItem implements ElementInterface
 {
-    use \Encore\Giml\ElementTrait;
-    use Traits\Events;
-    use Traits\Wx;
+    use ElementTrait;
+    use Events;
+    use Wx;
 
     protected $events = [
         'onSelect' => wxEVT_COMMAND_MENU_SELECTED
@@ -24,7 +30,7 @@ class MenuItem implements \Encore\Giml\ElementInterface
 
         if ($this->shortcut) $title .= "\t{$this->shortcut}";
 
-        $this->element = new \wxMenuItem($this->parent->getRaw(), wxID_ANY, $title, $this->description, wxITEM_NORMAL);
+        $this->element = new wxMenuItem($this->parent->getRaw(), wxID_ANY, $title, $this->description, wxITEM_NORMAL);
 
         $this->bindEvents();
         

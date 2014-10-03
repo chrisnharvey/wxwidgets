@@ -2,16 +2,19 @@
 
 namespace Encore\Wx\Element;
 
-use Encore\Giml;
+use wxBoxSizer;
+use Encore\Giml\ElementTrait;
+use Encore\Wx\Element\Traits\Wx;
+use Encore\Giml\ElementInterface;
 
-class BoxSizer implements Giml\ElementInterface
+class BoxSizer implements ElementInterface
 {
-    use \Encore\Giml\ElementTrait;
-    use Traits\Wx;
+    use ElementTrait;
+    use Wx;
 
     public function init()
     {
-        $this->element = new \wxBoxSizer($this->orientation == 'horizontal'
+        $this->element = new wxBoxSizer($this->orientation == 'horizontal'
             ? wxHORIZONTAL
             : wxVERTICAL);
 

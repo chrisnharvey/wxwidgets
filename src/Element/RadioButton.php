@@ -2,13 +2,21 @@
 
 namespace Encore\Wx\Element;
 
-class RadioButton implements \Encore\Giml\ElementInterface
+use wxRadioButton;
+use Encore\Giml\ElementTrait;
+use Encore\Wx\Element\Traits\Wx;
+use Encore\Wx\Element\Traits\Events;
+use Encore\Wx\Element\Traits\Sizable;
+use Encore\Wx\Element\Traits\Positionable;
+use Encore\Giml\ElementInterface;
+
+class RadioButton implements ElementInterface
 {
-    use \Encore\Giml\ElementTrait;
-    use Traits\Wx;
-    use Traits\Sizable;
-    use Traits\Positionable;
-    use Traits\Events;
+    use ElementTrait;
+    use Wx;
+    use Sizable;
+    use Positionable;
+    use Events;
 
     protected $events = [
         'onClick' => wxEVT_RADIOBUTTON
@@ -18,7 +26,7 @@ class RadioButton implements \Encore\Giml\ElementInterface
     {
         $id = $this->collection->getTrueId($this->id);
 
-        $this->element = new \wxRadioButton($this->parent->getParent()->getRaw(), $id, $this->text ?: $this->value, $this->getPosition(), $this->getSize());
+        $this->element = new wxRadioButton($this->parent->getParent()->getRaw(), $id, $this->text ?: $this->value, $this->getPosition(), $this->getSize());
 
         $this->bindEvents();
 

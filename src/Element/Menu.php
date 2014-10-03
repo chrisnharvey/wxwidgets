@@ -2,10 +2,15 @@
 
 namespace Encore\Wx\Element;
 
-class Menu implements \Encore\Giml\ElementInterface
+use wxMenu;
+use Encore\Giml\ElementTrait;
+use Encore\Giml\ElementInterface;
+use Encore\Wx\Element\Traits\Wx;
+
+class Menu implements ElementInterface
 {
-    use \Encore\Giml\ElementTrait;
-    use Traits\Wx;
+    use ElementTrait;
+    use Wx;
 
     public function init()
     {

@@ -2,15 +2,21 @@
 
 namespace Encore\Wx\Element;
 
+use wxWebView;
+use Encore\Giml\ElementTrait;
+use Encore\Wx\Element\Traits\Wx;
+use Encore\Wx\Element\Traits\Sizable;
+use Encore\Wx\Element\Traits\Positionable;
+use Encore\Wx\Element\Traits\Events;
 use Encore\Giml\ElementInterface;
 
-class WebView implements \Encore\Giml\ElementInterface
+class WebView implements ElementInterface
 {
-    use \Encore\Giml\ElementTrait;
-    use Traits\Sizable;
-    use Traits\Positionable;
-    use Traits\Events;
-    use Traits\Wx;
+    use ElementTrait;
+    use Sizable;
+    use Positionable;
+    use Events;
+    use Wx;
 
     protected $events = [
         'onLoad' => wxEVT_WEBVIEW_NAVIGATED,
@@ -25,7 +31,7 @@ class WebView implements \Encore\Giml\ElementInterface
     {
         $id = $this->collection->getTrueId($this->id);
 
-        $this->element = \wxWebView::NewMethod($this->parent->getParent()->getRaw(), $id, $this->url, $this->getPosition(), $this->getSize());
+        $this->element = wxWebView::NewMethod($this->parent->getParent()->getRaw(), $id, $this->url, $this->getPosition(), $this->getSize());
 
         $this->bindEvents();
 

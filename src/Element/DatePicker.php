@@ -2,13 +2,21 @@
 
 namespace Encore\Wx\Element;
 
-class DatePicker implements \Encore\Giml\ElementInterface
+use wxCalendarCtrl;
+use Encore\Giml\ElementTrait;
+use Encore\Giml\ElementInterface;
+use Encore\Wx\Element\Traits\Wx;
+use Encore\Wx\Element\Traits\Events;
+use Encore\Wx\Element\Traits\Sizable;
+use Encore\Wx\Element\Traits\Positionable;
+
+class DatePicker implements ElementInterface
 {
-    use \Encore\Giml\ElementTrait;
-    use Traits\Events;
-    use Traits\Wx;
-    use Traits\Positionable;
-    use Traits\Sizable;
+    use ElementTrait;
+    use Events;
+    use Wx;
+    use Positionable;
+    use Sizable;
 
     protected $events = [
         'onDayChange' => wxEVT_CALENDAR_DAY_CHANGED,
@@ -24,7 +32,7 @@ class DatePicker implements \Encore\Giml\ElementInterface
         $id = $this->collection->getTrueId($this->id);
         $date = $this->date ? strtotime($this->date) : wxDefaultDateTime;
 
-        $this->element = new \wxCalendarCtrl($this->parent->getParent()->getRaw(), $id, $date, $this->getPosition(), $this->getSize(), 0 );
+        $this->element = new wxCalendarCtrl($this->parent->getParent()->getRaw(), $id, $date, $this->getPosition(), $this->getSize(), 0 );
 
         $this->bindEvents();
 

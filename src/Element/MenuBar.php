@@ -7,10 +7,10 @@ use Encore\Giml\ElementTrait;
 use Encore\Wx\Element\Traits\Wx;
 use Encore\Giml\ElementInterface;
 
-class MenuBar implements \Encore\Giml\ElementInterface
+class MenuBar implements ElementInterface
 {
     use ElementTrait;
-    use Traits\Wx;
+    use Wx;
 
     public function init()
     {
