@@ -19,7 +19,7 @@ class Menu implements ElementInterface
      */
     public function init()
     {
-        $this->element = new \wxMenu;
+        $this->element = new wxMenu;
 
         $this->parent->getRaw()->Append($this->element, $this->title);
     }
