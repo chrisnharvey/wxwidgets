@@ -31,9 +31,4 @@ class Frame implements Giml\ElementInterface
 
         $this->bindEvents();
     }
-
-    public function show()
-    {
-        $this->element->Show();
-    }
 }
