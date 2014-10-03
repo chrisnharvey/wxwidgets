@@ -33,6 +33,11 @@ class TextBox implements ElementInterface
         'processEnter' => wxTE_PROCESS_ENTER
     ];
 
+    /**
+     * Initialise the object
+     * 
+     * @return void
+     */
     public function init()
     {
         $id = $this->collection->getTrueId($this->id);
@@ -44,6 +49,11 @@ class TextBox implements ElementInterface
         $this->parent->getRaw()->Add($this->element);
     }
 
+    /**
+     * Get the value of the text box
+     * 
+     * @return void
+     */
     public function getValue()
     {
         if ($this->element) {

@@ -27,6 +27,11 @@ class DatePicker implements ElementInterface
         'onClick' => wxEVT_CALENDAR_WEEKDAY_CLICKED
     ];
 
+    /**
+     * Initialise the object
+     * 
+     * @return void
+     */
     public function init()
     {
         $id = $this->collection->getTrueId($this->id);

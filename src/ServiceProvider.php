@@ -9,6 +9,12 @@ use Encore\Giml\NamespaceElementFactory;
 
 class ServiceProvider extends \Encore\Container\ServiceProvider
 {
+    /**
+     * Register the specified binding into the container
+     * 
+     * @param  string $binding
+     * @return void
+     */
     public function register($binding)
     {
         if ( ! extension_loaded('wxwidgets')) {
@@ -44,6 +50,11 @@ class ServiceProvider extends \Encore\Container\ServiceProvider
         }
     }
 
+    /**
+     * Register the view parser
+     * 
+     * @return void
+     */
     protected function registerViewParser()
     {
         $this->container->bind('view.viewparser', new ViewParser(
@@ -53,16 +64,31 @@ class ServiceProvider extends \Encore\Container\ServiceProvider
         ));
     }
 
+    /**
+     * Register the GIML collection
+     * 
+     * @return void
+     */
     protected function registerGimlCollection()
     {
         $this->container['giml.collection'] = new Collection;
     }
 
+    /**
+     * Register WxWidgets app handler
+     * 
+     * @return void
+     */
     protected function registerWx()
     {
         $this->container->bind('wx', new Widgets);
     }
 
+    /**
+     * Register the WxWidgets launcher
+     * 
+     * @return void
+     */
     protected function registerLauncher()
     {
         $this->container->bind('launcher', function() {
@@ -72,11 +98,21 @@ class ServiceProvider extends \Encore\Container\ServiceProvider
         });
     }
 
+    /**
+     * Register the WxWidgets install command
+     * 
+     * @return array
+     */
     public function commands()
     {
         return ['Encore\Wx\Command\Install'];
     }
 
+    /**
+     * Set which services this provider provides
+     * 
+     * @return array
+     */
     public function provides()
     {
         return ['wx', 'launcher', 'view.viewparser', 'giml.collection'];

@@ -4,6 +4,12 @@ namespace Encore\Wx\Element\Traits;
 
 trait Style
 {
+    /**
+     * Get a style constant from its name
+     * 
+     * @param  string $style
+     * @return integer
+     */
     protected function getStyle($style)
     {
         return in_array($style, $this->getStyles())
@@ -11,11 +17,22 @@ trait Style
             : null;
     }
 
+    /**
+     * Get the style to constant map
+     * 
+     * @return array
+     */
     protected function getStyles()
     {
         return $this->style;
     }
 
+    /**
+     * Build the style constant using the bitwise operator
+     * 
+     * @param  array $defaults
+     * @return integer
+     */
     protected function buildStyles(array $defaults = null)
     {
         $styles = $this->getStyles();

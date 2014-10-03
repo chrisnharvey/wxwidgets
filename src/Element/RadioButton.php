@@ -22,6 +22,11 @@ class RadioButton implements ElementInterface
         'onClick' => wxEVT_RADIOBUTTON
     ];
 
+    /**
+     * Initialise the object
+     * 
+     * @return void
+     */
     public function init()
     {
         $id = $this->collection->getTrueId($this->id);

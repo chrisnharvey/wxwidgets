@@ -17,6 +17,11 @@ class Collection implements CollectionInterface, ControllerAwareInterface
     protected $objects = [];
     protected $ids = [];
 
+    /**
+     * Add an element to the collection
+     * 
+     * @param ElementInterface $element
+     */
     public function add(ElementInterface $element)
     {
         $id = $element->id;
@@ -37,6 +42,11 @@ class Collection implements CollectionInterface, ControllerAwareInterface
         $this->ids[array_search($element, $this->objects, true)] = $id;
     }
 
+    /**
+     * Get the top-level window element
+     * 
+     * @return ElementInterface
+     */
     public function getTopLevelWindow()
     {
         foreach ($this->objects as $object) {
@@ -47,6 +57,11 @@ class Collection implements CollectionInterface, ControllerAwareInterface
         }
     }
 
+    /**
+     * Remove the element from the collection
+     * 
+     * @return void
+     */
     public function remove($element)
     {
         $trueId = $this->getTrueId($element);
@@ -57,6 +72,12 @@ class Collection implements CollectionInterface, ControllerAwareInterface
         unset($this->ids[$trueId]);
     }
 
+    /**
+     * Get an element by its ID
+     * 
+     * @param  string|int $id
+     * @return ElementInterface
+     */
     public function getElementById($id)
     {
         $id = $this->getTrueId($id);
@@ -69,16 +90,34 @@ class Collection implements CollectionInterface, ControllerAwareInterface
         return $this->objects[$id];
     }
 
+    /**
+     * Get the true ID for a custom element ID
+     * 
+     * @param  mixed $id
+     * @return int
+     */
     public function getTrueId($id)
     {
         return array_search($id, $this->ids, true);
     }
 
+    /**
+     * Generate an ID if one wasn't specified
+     * 
+     * @return string
+     */
     public function generateId()
     {
         return uniqid('auto', true);
     }
 
+    /**
+     * Check an ID does not already exist
+     * 
+     * @param  mixed $id
+     * @throws DuplicateIdException
+     * @return void
+     */
     protected function checkId($id)
     {
         if (in_array($id, $this->ids)) {

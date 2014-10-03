@@ -6,6 +6,11 @@ use Encore\Wx\ClosureCallback;
 
 trait Events
 {
+    /**
+     * Bind this elements events to the wxPHP event handler
+     * 
+     * @return void
+     */
     protected function bindEvents()
     {
         $callback = new ClosureCallback(function($method) {
@@ -22,6 +27,13 @@ trait Events
         }
     }
 
+    /**
+     * Connect the event to the top-level window
+     * 
+     * @param  integer   $constant
+     * @param  callable $callback
+     * @return void
+     */
     protected function connectEvent($constant, callable $callback)
     {
         $id = $this->element->GetId();

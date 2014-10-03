@@ -10,6 +10,11 @@ class Install extends \Encore\Console\Command
     protected $name = 'wxwidgets:install';
     protected $description = 'Install wxWidgets and wxPHP';
 
+    /**
+     * Fire the install command
+     * 
+     * @return void
+     */
     public function fire()
     {
         $handle = popen(PHP_BINDIR.'/pecl install wxwidgets 2>&1', 'r');
@@ -19,6 +24,11 @@ class Install extends \Encore\Console\Command
         }
     }
 
+    /**
+     * Get a list of options that this command takes
+     * 
+     * @return array
+     */
     public function getOptions()
     {
         return [

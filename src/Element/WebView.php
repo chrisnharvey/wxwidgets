@@ -27,6 +27,11 @@ class WebView implements ElementInterface
         'onError' => wxEVT_WEBVIEW_ERROR
     ];
 
+    /**
+     * Initialise the object
+     * 
+     * @return void
+     */
     public function init()
     {
         $id = $this->collection->getTrueId($this->id);

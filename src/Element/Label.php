@@ -16,6 +16,11 @@ class Label implements ElementInterface
     use Positionable;
     use Wx;
 
+    /**
+     * Initialise the object
+     * 
+     * @return void
+     */
     public function init()
     {
         $this->element = new wxStaticText($this->parent->getParent()->getRaw(), wxID_ANY, $this->text ?: $this->value, $this->getPosition(), $this->getSize());
@@ -23,6 +28,11 @@ class Label implements ElementInterface
         $this->parent->getRaw()->Add($this->element);
     }
 
+    /**
+     * Set the label value
+     * 
+     * @param string $value
+     */
     public function setValue($value)
     {
         if ($this->element) {

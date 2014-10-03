@@ -22,6 +22,11 @@ class Button implements ElementInterface
         'onClick' => wxEVT_COMMAND_BUTTON_CLICKED
     ];
 
+    /**
+     * Initialise the object
+     * 
+     * @return void
+     */
     public function init()
     {
         $id = $this->collection->getTrueId($this->id);

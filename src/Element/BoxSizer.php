@@ -12,6 +12,11 @@ class BoxSizer implements ElementInterface
     use ElementTrait;
     use Wx;
 
+    /**
+     * Initialise the object
+     * 
+     * @return void
+     */
     public function init()
     {
         $this->element = new wxBoxSizer($this->orientation == 'horizontal'
@@ -25,6 +30,11 @@ class BoxSizer implements ElementInterface
         }
     }
 
+    /**
+     * Set the element attributes
+     * 
+     * @param array $attributes
+     */
     public function setAttributes(array $attributes)
     {
         foreach ($attributes as $key => $value) {
@@ -32,6 +42,12 @@ class BoxSizer implements ElementInterface
         }
     }
 
+    /**
+     * Set the an element attribute
+     * 
+     * @param string $key
+     * @param mixed $value
+     */
     public function setAttribute($key, $value)
     {
         switch ($key) {
@@ -47,6 +63,14 @@ class BoxSizer implements ElementInterface
         }
     }
 
+    /**
+     * Assert a value/expression is true
+     * 
+     * @param  boolean $assertion
+     * @param  boolean $true
+     * @param  boolean $false
+     * @return boolean
+     */
     protected function assert($assertion, $true = true, $false = false)
     {
         if ($assertion) return $true;

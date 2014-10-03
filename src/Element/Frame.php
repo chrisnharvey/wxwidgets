@@ -32,6 +32,11 @@ class Frame implements ElementInterface
         'closeBox' => wxCLOSE_BOX
     ];
 
+    /**
+     * Initialise the object
+     * 
+     * @return void
+     */
     public function init()
     {
         $this->element = new wxFrame(null, wxID_ANY, $this->title, $this->getPosition(), $this->getSize(), wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL|$this->buildStyles());

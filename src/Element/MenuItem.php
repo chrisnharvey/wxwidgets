@@ -18,6 +18,11 @@ class MenuItem implements ElementInterface
         'onSelect' => wxEVT_COMMAND_MENU_SELECTED
     ];
 
+    /**
+     * Initialise the object
+     * 
+     * @return void
+     */
     public function init()
     {
         if ($this->type == 'separator') {
@@ -37,6 +42,11 @@ class MenuItem implements ElementInterface
         $this->parent->getRaw()->Append($this->element);
     }
 
+    /**
+     * Get the menu item type
+     * 
+     * @return integer
+     */
     protected function getType()
     {
         switch ($this->type) {
