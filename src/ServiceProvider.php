@@ -57,11 +57,13 @@ class ServiceProvider extends \Encore\Container\ServiceProvider
      */
     protected function registerViewParser()
     {
-        $this->container->bind('view.viewparser', new ViewParser(
-            $this->container['giml.reader'],
-            $this->container['giml.collection'],
-            new NamespaceElementFactory('Encore\Wx\Element')
-        ));
+        $this->container->bind('view.viewparser', function() {
+            return new ViewParser(
+                $this->container['giml.reader'],
+                $this->container['giml.collection'],
+                new NamespaceElementFactory('Encore\Wx\Element')
+            );
+        });
     }
 
     /**
