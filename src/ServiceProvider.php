@@ -71,7 +71,7 @@ class ServiceProvider extends \Encore\Container\ServiceProvider
      */
     protected function registerGimlCollection()
     {
-        $this->container['giml.collection'] = new Collection;
+        $this->container['giml.collection'] = 'Encore\Wx\Collection';
     }
 
     /**
