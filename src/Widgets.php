@@ -44,5 +44,7 @@ class Widgets extends \wxApp implements ContainerAwareInterface
     public function OnExit()
     {
         $this->getContainer()->quit();
+
+        exit(0);
     }
 }
