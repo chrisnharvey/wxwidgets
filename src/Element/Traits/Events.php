@@ -36,6 +36,10 @@ trait Events
      */
     protected function connectEvent($constant, callable $callback)
     {
+        if ( ! method_exists($this->element, 'GetId')) {
+            return $this->element->Connect($constant, $callback);
+        }
+
         $id = $this->element->GetId();
 
         $this->collection
