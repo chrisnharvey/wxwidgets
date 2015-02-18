@@ -5,6 +5,7 @@ namespace Encore\Wx\Element;
 use wxTaskBarIcon;
 use Encore\Giml\ElementTrait;
 use Encore\Wx\Element\Traits\Wx;
+use Encore\Wx\Element\Raw\TaskBarIcon as RawTaskBarIcon;
 use Encore\Giml\ElementInterface;
 
 class TaskBarIcon implements ElementInterface
@@ -19,6 +20,6 @@ class TaskBarIcon implements ElementInterface
      */
     public function init()
     {
-        $this->element = new wxTaskBarIcon;
+        $this->element = new RawTaskBarIcon;
     }
 }
