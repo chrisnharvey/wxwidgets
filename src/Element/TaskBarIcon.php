@@ -22,4 +22,18 @@ class TaskBarIcon implements ElementInterface
     {
         $this->element = new RawTaskBarIcon;
     }
+
+    /**
+     * Add a child element
+     * 
+     * @param ElementInterface $child
+     */
+    public function addChild(ElementInterface $child)
+    {
+        if ($child instanceof Menu) {
+            $this->element->setMenu($child);
+        }
+
+        $this->children[] = $child;
+    }
 }
