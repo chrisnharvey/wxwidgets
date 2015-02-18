@@ -2,6 +2,7 @@
 
 namespace Encore\Wx\Element\Raw;
 
+use wxMenu;
 use Encore\Giml\ElementInterface;
 
 class TaskBarIcon extends \wxTaskBarIcon
@@ -15,7 +16,7 @@ class TaskBarIcon extends \wxTaskBarIcon
 
     public function CreatePopupMenu()
     {
-        if ( ! isset($this->menu)) return new \wxMenu;
+        if ( ! isset($this->menu)) return new wxMenu;
 
         return $this->menu->getRaw();
     }
