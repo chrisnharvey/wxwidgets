@@ -21,6 +21,10 @@ class Menu implements ElementInterface
     {
         $this->element = new wxMenu;
 
-        $this->parent->getRaw()->Append($this->element, $this->title);
+        $rawParent = $this->parent->getRaw();
+
+        if ($rawParent instanceof wxMenuBar or $rawParent instanceof wxMenu) {
+            $rawParent->Append($this->element, $this->title);
+        }
     }
 }
