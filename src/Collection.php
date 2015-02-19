@@ -8,11 +8,14 @@ use Encore\Giml\ElementInterface;
 use Encore\Giml\CollectionInterface;
 use Encore\Controller\ControllerAwareTrait;
 use Encore\Controller\ControllerAwareInterface;
+use Encore\Container\ContainerAwareInterface;
+use Encore\Container\ContainerAwareTrait;
 use Encore\Giml\Exception\DuplicateIdException;
 
-class Collection implements CollectionInterface, ControllerAwareInterface
+class Collection implements CollectionInterface, ControllerAwareInterface, ContainerAwareInterface
 {
     use ControllerAwareTrait;
+    use ContainerAwareTrait;
 
     protected $objects = [];
     protected $ids = [];
