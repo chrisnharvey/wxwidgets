@@ -2,10 +2,10 @@
 
 namespace Encore\Wx\Element;
 
+use wxIcon;
 use Encore\Giml\ElementTrait;
 use Encore\Wx\Element\Traits\Wx;
 use Encore\Wx\Element\Raw\TaskBarIcon as RawTaskBarIcon;
-use Encore\Wx\Element\Raw\Icon;
 use Encore\Giml\ElementInterface;
 
 class TaskBarIcon implements ElementInterface
@@ -24,7 +24,7 @@ class TaskBarIcon implements ElementInterface
 
         $resourcesPath = $this->collection->getContainer()->resourcesPath();
 
-        $icon = new Icon($resourcesPath.'/'.$this->icon);
+        $icon = new wxIcon($resourcesPath.'/'.$this->icon, wxBITMAP_TYPE_ANY);
 
         $this->element->SetIcon($icon, $this->tip);
     }
