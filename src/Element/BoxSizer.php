@@ -31,18 +31,6 @@ class BoxSizer implements ElementInterface
     }
 
     /**
-     * Set the element attributes
-     * 
-     * @param array $attributes
-     */
-    public function setAttributes(array $attributes)
-    {
-        foreach ($attributes as $key => $value) {
-            $this->setAttribute($key, $value);
-        }
-    }
-
-    /**
      * Set the an element attribute
      * 
      * @param string $key
