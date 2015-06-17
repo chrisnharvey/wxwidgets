@@ -40,29 +40,14 @@ class BoxSizer implements ElementInterface
     {
         switch ($key) {
             case 'orientation':
-                $this->attributes[$key] = $this->assert(
-                    $value == 'horizontal',
-                    wxHORIZONTAL,
+                $this->attributes[$key] = 
+                    $value == 'horizontal' ?
+                    wxHORIZONTAL :
                     wxVERTICAL
-                );
+                ;
             default:
                 $this->attributes[$key] = $value;
             break;
         }
-    }
-
-    /**
-     * Assert a value/expression is true
-     * 
-     * @param  boolean $assertion
-     * @param  boolean $true
-     * @param  boolean $false
-     * @return boolean
-     */
-    protected function assert($assertion, $true = true, $false = false)
-    {
-        if ($assertion) return $true;
-
-        return $false;
     }
 }
